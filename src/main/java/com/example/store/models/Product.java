@@ -7,6 +7,7 @@ import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 
+
 @Entity
 @Table(name = "products")
 @Data

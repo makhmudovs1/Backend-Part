@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
-
-
     @GetMapping("/")
     public String products(@RequestParam(name = "title", required = false) String title, Model model) {
         model.addAttribute("products", productService.listProducts(title));
