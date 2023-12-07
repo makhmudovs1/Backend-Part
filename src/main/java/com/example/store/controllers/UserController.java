@@ -33,6 +33,6 @@ public class UserController {
 
     @GetMapping("/hello")
     public String securityUrl() {
-        return "helllo";
+        return "hello";
     }
 }
