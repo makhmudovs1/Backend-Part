@@ -10,7 +10,7 @@
 <body>
     <h1> Store | <a href="/login">Войти</a> </h1><hr>
     <form action="/logout" method="post">
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         <input type="submit" value="Выйти">
     </form>
     <h4> Товары со всей России </h4>
