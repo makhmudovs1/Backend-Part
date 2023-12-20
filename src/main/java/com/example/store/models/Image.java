@@ -1,5 +1,6 @@
 package com.example.store.models;
 
+import com.example.store.models.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name="images")
+@Table(name = "images")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,7 +29,6 @@ public class Image {
     private boolean isPreviewImage;
     @Lob
     private byte[] bytes;
-
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Product product;
 }

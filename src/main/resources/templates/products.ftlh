@@ -1,42 +1,52 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Plants</title>
 </head>
 <body>
-    <h1> Store | <a href="/login">Войти</a> </h1><hr>
+<h1>Plants</h1>
+<hr>
+<#if user.email??>
+    <h3>Имя пользователя: <i>${user.name}</i></h3>
     <form action="/logout" method="post">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-        <input type="submit" value="Выйти">
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+        <input type="submit" value="Выйти"/>
     </form>
-    <h4> Товары со всей России </h4>
-    <form action="/" method="get">
-        Поиск по названию объявления: <input type="text" name="title"><br>
-        <input type="submit" value="Поиск">
-    </form>
-    <#list products as product>
-        <div>
-            <p><b> ${product.title}</b> ${product.price} руб. | <a href="/product/${product.id}"> Подробнее... </a> </p>
-        </div>
-        <#else>
-        <h3> Товаров нет</h3>
-    </#list>
+    <#if user.isAdmin()>
+        <a href="/admin">Панель администратора</a>
+    </#if>
+<#else>
+    <#if user.email??>
+        <h1><a href="/login">Войти</a></h1>
+    </#if>
+</#if>
+<hr>
+<h4>Товары со всей России</h4>
+<form action="/" method="get">
+    Поиск по названию объявления: <input type="text" name="title">
+    <input type="submit" value="Поиск"/>
+</form>
+<#list products as product>
+    <div>
+        <p><b>${product.title}</b> ${product.price} руб. | <a href="/product/${product.id}">Подробнее...</a></p>
+    </div>
+<#else>
+    <h3>Товаров нет</h3>
+</#list>
+<#if user.email??>
     <hr>
-    <h3> Создать новый товар</h3>
+    <h3>Создать новый товар</h3>
     <form action="/product/create" method="post" enctype="multipart/form-data">
         Название объявления: <input type="text" name="title"/><br><br>
         Описание объявления: <input type="text" name="description"/><br><br>
         Цена: <input type="number" name="price"/><br><br>
         Город: <input type="text" name="city"/><br><br>
-        Имя: <input type="text" name="author"/><br><br>
         Первая фотография: <input type="file" name="file1"/><br><br>
         Вторая фотография: <input type="file" name="file2"/><br><br>
         Третья фотография: <input type="file" name="file3"/><br><br>
-        <input type="submit" value="Добавить товар">
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+        <input type="submit" value="Добавить товар"/>
     </form>
+</#if>
 </body>
 </html>

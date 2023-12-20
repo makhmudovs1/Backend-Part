@@ -1,18 +1,14 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Plants</title>
 </head>
 <body>
-<h1> Store </h1>
-<h4> Регистрация </h4>
+<h1>Plants</h1><hr>
+<h4>Регистрация</h4>
 <form action="/registration" method="post">
-    Имя пользователя: <input type="text" name="name"> <br><br>
-    Эл. почта: <input type="email" name="email"> <br><br>
+    Имя пользователя: <input type="text" name="name"><br><br>
+    Эл. почта: <input type="email" name="email"><br><br>
     Номер телефона: <input type="text" name="phoneNumber"><br><br>
     Пароль: <input type="password" name="password"><br><br>
     <input type="hidden" name="_csrf" value="${_csrf.token}">
